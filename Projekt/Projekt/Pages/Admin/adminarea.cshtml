@@ -1,0 +1,83 @@
+﻿@page
+@model Projekt.Pages.Admin.adminareaModel
+@{
+    ViewData["Title"] = "Admin Panel";
+    string currentUser = HttpContext.Request.Cookies["RoleId"];
+}
+<h1>Admin Panel</h1>
+<h3>Hello</h3>
+
+
+<a class="adminPanel-btn btn btn-danger" asp-area="" asp-page="../Login/UserLogOut">LogOut</a>
+
+@if (Int32.Parse(currentUser) == 1)
+{
+    <a class="adminPanel-btn btn btn-success" asp-area="" asp-page="../Admin/AddUser">Dodać użytkownika</a>
+    <a class="adminPanel-btn btn btn-secondary" asp-area="" asp-page="../Parts/Create">Dodać produkt</a>
+}
+@if (Int32.Parse(currentUser) == 2)
+{
+    <a class="adminPanel-btn btn btn-secondary" asp-area="" asp-page="./Create">Dodać produkt</a>
+}
+
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Part[0].partName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Part[0].descript)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Part[0].price)
+            </th>
+            <th>
+                Zdjęcie
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Part[0].Category)
+            </th>
+            @if (Int32.Parse(currentUser) == 1 || Int32.Parse(currentUser) == 2)
+            {
+                <th>
+                    Akcja
+                </th>
+            }
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Part)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.partName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.descript)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.price)
+                </td>
+                <td>
+                    <img src="@Html.DisplayFor(modelItem => item.imgUrl)" alt="Part Photo" width="50px" />
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Category.brandName)
+                </td>
+                @if (Int32.Parse(currentUser) == 1 || Int32.Parse(currentUser) == 2)
+                {
+                    <td>
+                        <a asp-page="../Parts/Edit" asp-route-id="@item.id">Edit</a> |
+                        <a asp-page="../Parts/Details" asp-route-id="@item.id">Details</a> |
+                        <a asp-page="../Parts/Delete" asp-route-id="@item.id">Delete</a>
+                    </td>
+
+                }
+
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,81 @@
+﻿@page
+@model IndexModel
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Hello World</title>
+    <link href="~/index.css" rel="stylesheet" />
+</head>
+<body>
+    
+    <form method="post" class="inputForm">
+        <h1>Wprowadzanie danych</h1>
+        <div class="inputsForm">
+            <div class="inputDiv fisrtNameInput">
+                @*<p>Imie:</p>*@
+                <input class="input" placeholder="Imie" type="text" name="firstName" value="" required />
+
+            </div>
+            <div class="inputDiv secondNameInput">
+                @*<p>Nazwisko:</p>*@
+                <input class="input" placeholder="Nazwisko" type="text" name="lastName" value="" required />
+            </div>
+
+            <div class="inputDiv ageInput">
+                @*<p>Wiek:</p>*@
+                <input class="input" placeholder="Wiek" min="0" max="150" type="number" name="age" value="" required />
+            </div>
+            <div class="inputDiv genderInput">
+                @*<p>Plec:</p>*@
+                <select class="input" name="gender" required>
+                    <option value="" hidden>Płeć</option>
+                    <option value="Męzczyzna">Mezczyzna</option>
+                    <option value="Kobieta">Kobieta</option>
+                </select>
+            </div>
+            <div class="inputDiv telInput">
+                @*<p>Telefon:</p>*@
+                <input class="input" placeholder="Telefon" type="tel" name="tel" value="" required />
+            </div>
+
+            <div class="inputDiv langInput">
+                @*<p>Jakie języki programowania znasz?</p>*@
+
+                <div class="inputCheckboxs">
+                    <span>
+                        <label for="csharp">C#</label>
+                        @Html.CheckBox("csharp")
+                    </span>
+
+                    <span>
+                        <label for="csharp">Java</label>
+                        @Html.CheckBox("java")
+                    </span>
+
+                    <span>
+                        <label for="csharp">C++</label>
+                        @Html.CheckBox("cpp")
+                    </span>
+                </div>
+            </div>
+
+
+                @*<input type="checkbox" name="csharp" value="false" />
+            <label for="csharp">C#</label>
+
+            <input type="checkbox" name="java" value="" />
+            <label for="java">Java</label>
+
+            <input type="checkbox" name="cpp" value="" />
+            <label for="cpp">C++</label>*@
+        </div>
+
+        <input class="sumbitBtn" type="submit" name="" value="Przeslij" />
+    </form>
+
+    
+</body>
+</html>

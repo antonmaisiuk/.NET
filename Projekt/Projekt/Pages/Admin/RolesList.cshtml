@@ -1,0 +1,64 @@
+﻿@page
+@model Projekt.Pages.Admin.RolesListModel
+@{
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.roleList[0].id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.roleList[0].name)
+            </th>
+            @*<th>
+                @Html.DisplayNameFor(model => model.Part[0].price)
+            </th>
+            <th>
+                Zdjęcie
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Part[0].Category)
+            </th>
+            @if (Model.roleId == 1 || Model.roleId == 2)
+            {
+                <th>
+                    Akcja
+                </th>
+            }*@
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.roleList)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.name)
+                </td>
+                @*<td>
+                    @Html.DisplayFor(modelItem => item.price)
+                </td>
+                <td>
+                    <img src="@Html.DisplayFor(modelItem => item.imgUrl)" alt="Part Photo" width="50px" />
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Category.brandName)
+                </td>
+                @if (Model.roleId == 1 || Model.roleId == 2)
+                {
+                    <td>
+                        <a asp-page="../Parts/Edit" asp-route-id="@item.id">Edit</a> |
+                        <a asp-page="../Parts/Details" asp-route-id="@item.id">Details</a> |
+                        <a asp-page="../Parts/Delete" asp-route-id="@item.id">Delete</a>
+                    </td>
+
+                }*@
+
+            </tr>
+        }
+    </tbody>
+</table>

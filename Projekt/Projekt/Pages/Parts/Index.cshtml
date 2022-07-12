@@ -1,0 +1,88 @@
+﻿@page
+@model Projekt.Pages.Parts.IndexModel
+
+@{
+    ViewData["Title"] = "Katalog";
+}
+
+<h1 class="text-center">Katalog</h1>
+
+<div class="container">
+    <div class="row g-1">
+        @foreach (var item in Model.Part)
+        {
+            <div class="col-md-3">
+                <a asp-page="./Details" asp-route-id="@item.id">
+                    <div class="card p-3">
+                        <div class="text-center">
+                            <img src="@Html.DisplayFor(modelItem => item.imgUrl)" width="100%" height="100%">
+                        </div>
+
+                        <div class="product-details">
+                            <span class="font-weight-bold d-block">@Html.DisplayFor(modelItem => item.price) zł</span>
+                            <span>@Html.DisplayFor(modelItem => item.partName)</span>
+                            <div class="category">@Html.DisplayFor(modelItem => item.Category.brandName) @Html.DisplayFor(modelItem => item.Category.modelName) @Html.DisplayFor(modelItem => item.Category.genName)</div>
+
+                            <div class="buttons d-flex flex-row">
+                                @*<button class="btn btn-success cart-button btn-block">Szczegóły</button>*@
+                                <button class="btn btn-success cart-button btn-block">Dodać do koszyka</button>
+                            </div>
+
+                        </div>
+                    </div>
+                </a>
+            </div>
+        }
+
+    </div>
+</div>
+
+@*<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Part[0].partName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Part[0].descript)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Part[0].price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Part[0].imgUrl)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Part[0].Category)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Part)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.partName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.descript)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.imgUrl)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Category.brandName)
+                </td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.id">Edit</a> |
+                    <a asp-page="./Details" asp-route-id="@item.id">Details</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>*@

@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<store>
+  <product id="2">
+    <name>fff</name>
+    <price>15,00</price>
+  </product>
+  <product id="3">
+    <name>Test22</name>
+    <price>12</price>
+  </product>
+  <product id="4">
+    <name>Samochod </name>
+    <price>1233</price>
+  </product>
+</store>

@@ -1,0 +1,34 @@
+﻿@page
+@model IndexModel
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+
+</head>
+<body>
+    <form action="" method="post">
+        <label asp-for="person.firstName"></label>
+        <input asp-for="person.firstName" value="" />
+        <span asp-validation-for="person.firstName" class="text-warning"></span>
+        <br /><br />
+
+        <label asp-for="person.age"></label>
+        <input asp-for="person.age" />
+        @*@Html.TextBoxFor(person => person.age, new { data_val = false })*@
+        <span asp-validation-for="person.age" class="text-warning"></span>
+        <br /><br />
+
+
+        <input type="submit" name="submitBtn" value="Zatwierdz" />
+    </form>
+</body>
+</html>

@@ -1,0 +1,49 @@
+﻿body {
+}
+
+.card {
+    border: 1px solid #eee;
+    cursor: pointer;
+}
+
+.buttons {
+    padding: 10px;    
+    border-radius: 4px;
+    position: relative;
+    margin-top: 7px;
+    transition: all 0.8s;
+}
+
+
+.card:hover {
+    transform: scale(1.04);
+    z-index: 2;
+    overflow: hidden;
+}
+
+.col-md-3{
+    margin-bottom:20px;
+}
+.col-md-3 .text-center{
+    max-height: 167px !important; 
+}
+.col-md-3 a{
+    text-decoration:none !important;
+    color:#090909 !important;
+}
+.col-md-3 a:hover{
+    text-decoration:none !important;
+}
+.category {
+    color: gray;
+    margin-top: 5px;
+}
+.details-img{
+    margin-right:20px !important;
+}
+.details-content .row {
+    align-items: center !important;
+}
+.adminPanel-btn{
+    margin-bottom:15px;
+}

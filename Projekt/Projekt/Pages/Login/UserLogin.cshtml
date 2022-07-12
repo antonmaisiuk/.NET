@@ -1,0 +1,52 @@
+﻿@page
+@model Projekt.Pages.Login.UserLoginModel
+@{
+}
+
+<div>
+    <h1>Logowane</h1>
+</div>
+<div class="container">
+    <form class="form-horizontal" method="post">
+        <div class="form-group">
+            <label asp-for="user.userName" class="control-label"></label>
+            <div class="col-sm-6">
+                <input asp-for="user.userName" class="form-control">
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="user.password" class="control-label col-sm-2"></label>
+            <div class="col-sm-6">
+                <input asp-for="user.password" class="form-control">
+            </div>
+        </div>
+        <input hidden asp-for="user.roleId" value="1" class="form-control">
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button class="btn btn btn-primary">Zatwierdź</button>
+                <span></span>
+            </div>
+        </div>
+    </form>
+</div>
+
+@*<div class="container">
+        <form asp-action="Login" asp-controller="Account" asp-anti-forgery="true">
+            <div class="validation" asp-validation-summary="ModelOnly"></div>
+            <div>
+                <div class="form-group">
+                    <label asp-for="Email">Введите Email</label>
+                    <input type="text" asp-for="Email" />
+                    <span asp-validation-for="Email" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="Password">Введите пароль</label>
+                    <input asp-for="Password" />
+                    <span asp-validation-for="Password" />
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Войти" class="btn btn-primary" />
+                </div>
+            </div>
+        </form>
+    </div>*@

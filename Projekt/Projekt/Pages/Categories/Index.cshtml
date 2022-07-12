@@ -1,0 +1,58 @@
+﻿@page
+@model Projekt.Pages.Categories.IndexModel
+
+@{
+    string currentUser = HttpContext.Request.Cookies["RoleId"];
+    ViewData["Title"] = "Index";
+}
+
+<h1>Kategorie</h1>
+@if(Int32.Parse(currentUser) == 1 || Int32.Parse(currentUser) == 2){
+
+<p>
+    <a class="btn btn-success" asp-page="Create">Create New</a>
+</p>
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Category[0].brandName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Category[0].modelName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Category[0].genName)
+            </th>
+            @if (Int32.Parse(currentUser) == 1 || Int32.Parse(currentUser) == 2)
+            {
+                <th>Akcja</th>
+            }
+            </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Category) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.brandName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.modelName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.genName)
+            </td>
+            @if (Int32.Parse(currentUser) == 1 || Int32.Parse(currentUser) == 2)
+            { 
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.id">Edit</a> |
+                    <a asp-page="./Details" asp-route-id="@item.id">Details</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.id">Delete</a>
+                </td>
+            }
+            </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,100 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+
+
+
+
+}
+
+<h2>Lista produktów</h2>
+<div class="row col-sm-12">
+    <a asp-page="Create" class="btn btn-primary btn-large">Dodaj</a>
+</div>
+
+<br />
+<br />
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">
+                @*<p>ID</p>*@
+                @Html.DisplayNameFor(model => Model.productList[0].id)
+            </th>
+            <th scope="col">
+                @*<p>Nazwa</p>*@
+                @Html.DisplayNameFor(model => Model.productList[0].name)
+            </th>
+            <th scope="col">
+                @*<p>Cena</p>*@
+                @Html.DisplayNameFor(model => Model.productList[0].categoryId)
+            </th>
+            <th scope="col">
+                @*<p>Cena</p>*@
+                @Html.DisplayNameFor(model => Model.productList[0].price)
+            </th>
+            <th scope="col">
+                Akcja
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var p in Model.productList)
+        {
+            <tr>
+                <th scope="row">@Html.DisplayFor(m => p.id)</th>
+                <td>@Html.DisplayFor(m => p.name)</td>
+                <td>@Html.DisplayFor(m => p.categoryLongName)</td>
+                <td>@Html.DisplayFor(m => p.price)</td>
+                <td>
+                    <a asp-page="Edit" asp-route-id=@p.id>Edytuj</a> |
+                    <a asp-page="Delete" asp-route-id=@p.id>Kasuj</a> |
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<h2>Lista kategorii</h2>
+<div class="row col-sm-12">
+    <a asp-page="CreateCat" class="btn btn-primary btn-large">Dodaj kategorie</a>
+</div>
+
+<br />
+<br />
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">
+                @*<p>ID</p>*@
+                @Html.DisplayNameFor(model => Model.categoryList[0].id)
+            </th>
+            <th scope="col">
+                @*<p>Nazwa</p>*@
+                @Html.DisplayNameFor(model => Model.categoryList[0].shortName)
+            </th>
+            <th scope="col">
+                @*<p>Cena</p>*@
+                @Html.DisplayNameFor(model => Model.categoryList[0].longName)
+            </th>
+            <th scope="col">
+                Akcja
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var p in Model.categoryList)
+        {
+            <tr>
+                <th scope="row">@Html.DisplayFor(m => p.id)</th>
+                <td>@Html.DisplayFor(m => p.shortName)</td>
+                <td>@Html.DisplayFor(m => p.longName)</td>
+                <td>
+                    <a asp-page="EditCat" asp-route-id=@p.id>Edytuj</a> |
+                    <a asp-page="DeleteCat" asp-route-id=@p.id>Kasuj</a> |
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

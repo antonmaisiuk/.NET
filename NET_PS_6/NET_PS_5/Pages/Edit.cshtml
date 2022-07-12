@@ -1,0 +1,61 @@
+﻿@page
+@model NET_PS_5.Pages.EditModel
+@{
+
+    ViewData["Title"] = "Edycja produktu";
+
+    string idOfProduct = HttpContext.Request.Query["id"];
+  
+
+
+
+
+    //if (Model.productList != null)
+    //{
+    //    foreach (var p in Model.productList)
+    //    {
+    //        if (p.id.ToString() == idOfProduct)
+    //        {
+    //            nameProduct = p.name;
+    //            priceProduct = p.price;
+
+    //        }
+    //    }
+    //}
+
+}
+
+
+<h2>Edycja produktu</h2>
+<br />
+<br />
+
+<div class="container">
+    <form class="form-horizontal" method="post">
+        <div class="form-group">
+            @*<label asp-for="editProduct.id" class="control-label col-sm-2"></label>*@
+            <div class="col-sm-6">
+                <input asp-for="editProduct.id" hidden value="@idOfProduct" class="form-control">
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="editProduct.name" class="control-label col-sm-2"></label>
+            <div class="col-sm-6">
+                <input asp-for="editProduct.name" class="form-control">
+                <span asp-validation-for="editProduct.name" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="editProduct.price" class="control-label col-sm-2"></label>
+            <div class="col-sm-6">
+                <input asp-for="editProduct.price" class="form-control">
+                <span asp-validation-for="editProduct.price" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button class="btn btn btn-primary">Zatwierdź</button>
+            </div>
+        </div>
+    </form>
+</div>

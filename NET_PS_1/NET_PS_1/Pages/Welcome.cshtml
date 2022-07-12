@@ -1,0 +1,63 @@
+﻿@page 
+@model NET_PS_1.Pages.WelcomeModel
+@{
+
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Hello World</title>
+    <link href="~/welcome.css" rel="stylesheet" />
+</head>
+<body>
+
+    @{
+        string csharpOut = "", cppOut = "", javaOut = "";
+        if (Model.csharp == true)
+        {
+            csharpOut = " C#";
+        }
+        if (Model.cpp == true)
+        {
+            cppOut = "C++ ";
+        }
+        if (Model.java == true)
+        {
+            javaOut = "Java ";
+        }
+    }
+
+    <form method="post" class="outputForm">
+        <h1>Dziękujemy, twoje dane:</h1>
+
+        <div class="outputData">
+
+            <span>
+                <span class="outputText">Imie:</span> @Model.firstName
+            </span>
+            <span>
+                <span class="outputText">Nazwisko:</span> @Model.lastName
+            </span>
+            <span>
+                <span class="outputText">Wiek:</span> @Model.age
+            </span>
+            <span>
+                <span class="outputText">Płeć: </span> @Model.gender
+            </span>
+            <span>
+                <span class="outputText">Telefon:</span> @Model.tel
+            </span>
+            <span>
+                <span class="outputText">Języki programowania:</span> @csharpOut @cppOut @javaOut
+            </span>
+        </div>
+        <input type="submit" value="Wrócić" class="sumbitBtn">
+    </form>
+
+
+    <br />
+
+</body>
+</html>

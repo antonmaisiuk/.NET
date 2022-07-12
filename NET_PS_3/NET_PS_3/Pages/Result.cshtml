@@ -1,0 +1,109 @@
+﻿@page
+@model NET_PS_3.Pages.ResultModel
+@{
+}
+
+@*<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Hello World</title>
+    <link rel="stylesheet" href="~/css/main.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+
+</head>
+
+<body class="bg-primary">*@
+    @{
+        double bmi;
+        string unitString = "";
+        string resultOfBmi = "";
+        string classOfResult = "";
+        if (Model.unit == 1)
+        {
+            unitString = "cm";
+            float heightInMeters = Model.height / 100;
+            bmi = Model.weight / (heightInMeters * heightInMeters);
+        }
+        else
+        {
+            unitString = "m";
+            bmi = Model.weight / (Model.height * Model.height);
+        }
+        bmi = Math.Round(bmi, 2);
+
+        if (bmi < 18.5)
+        {
+            resultOfBmi = "Wniosek: nedowaga. Minimalne, ale zwiększony poziom wystąpienia innych problemów zdrowotnych";
+            classOfResult = "border-info";
+        }
+        else if (bmi >= 18.5 && bmi < 25)
+        {
+            resultOfBmi = "Wniosek: optimum. Minimalne ryzyko wystąpienia problemów zdrowotnych";
+            classOfResult = "border-success";
+        }
+        else if (bmi >= 25 && bmi < 30)
+        {
+            resultOfBmi = "Wniosek: nadwaga. Srednie ryzyko wystąpienia problemów zdrowotnych";
+            classOfResult = "border-warning";
+        }
+        else if (bmi >= 30 && bmi < 35)
+        {
+            resultOfBmi = "Wniosek: otyłość I stopnia. Wysokie ryzyko wystąpienia problemów zdrowotnych";
+            classOfResult = "border-warning";
+        }
+        else if (bmi >= 35 && bmi < 40)
+        {
+            resultOfBmi = "Wniosek: otyłość II stopnia. Bardzo wysokie ryzyko wystąpienia problemów zdrowotnych";
+            classOfResult = "border-danger";
+        }
+        else if (bmi >= 40)
+        {
+            resultOfBmi = "Wniosek: otyłość III stopnia (chorobliwa). Ekstremalny poziom ryzyka wystąpienia problemów zdrowotnych";
+            classOfResult = "border-danger";
+        }
+
+        string age, email;
+
+        if (Model.age == 0) { age = ""; } else { age = Model.age.ToString(); }
+        if (Model.email == "") { email = ""; } else { email = Model.email; }
+    }
+
+    <div class="">
+        <h2>Wynik:</h2>
+    </div>
+    <form method="post" class="p-5 col-6 bg-white rounded">
+
+        <div class="mb-3">
+            <span class="outputText font-weight-bold">Imie:</span> @Model.firstName
+        </div>
+
+        <div class="mb-3">
+            <span class="outputText font-weight-bold">Wiek:</span> @age
+        </div>
+        <div class="mb-3">
+            <span class="outputText font-weight-bold">Email: </span> @email
+        </div>
+        <div class="mb-3">
+            <span class="outputText font-weight-bold">Wysokość:</span> @Model.height @unitString
+        </div>
+        <div class="mb-3">
+            <span class="outputText font-weight-bold">Waga:</span> @Model.weight
+        </div>
+
+        <div class="mb-3">
+            <span class="font-weight-bold">BMI:</span> @bmi
+            <p class="@classOfResult col-12 my-5 py-3 border border-4 rounded">@resultOfBmi</p>
+        </div>
+        <input type="submit" value="Wrócić" class="btn btn-primary col-12">
+    </form>
+
+
+
+
+@*</body>
+</html>*@
